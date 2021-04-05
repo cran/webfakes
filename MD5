@@ -1,14 +1,14 @@
-e96acd0a89c987ff0129a1c6b9c31d2d *DESCRIPTION
+93b66cad30eb1e668bd70e3bf36d1122 *DESCRIPTION
 fd6302a7bb0d29c2fba79b66644039bc *LICENSE
 900a305b75d387e1420e7297ab8f2b52 *NAMESPACE
-e7f44d3695cbcdb701722a46bf781e0b *NEWS.md
+f4017b817675829229ad88173f3d9dc0 *NEWS.md
 21f7dde3be417dab792de1e374d02967 *R/app-process.R
 92e2966244882d8938be20bf35501aed *R/app.R
 d8dbb0089c19547d728fd8f9cf8bf41c *R/base64.R
 a15ee3dddecc6fe3faaf206de2e61591 *R/cleancall.R
 74da295dd7a1e9db2b9a6e746cf9ae4a *R/compat-defer.R
 cc4d7116b0e1f49b56ecde3342e71c12 *R/digest.R
-adc25e5ea041ea32f688213b49e9ae92 *R/httpbin.R
+d78b3e2cf6188ec70a10370d15611641 *R/httpbin.R
 319f8c63839322c1d503fad9c9291a6d *R/local-app-process.R
 75ecdf4307a22a8de5e067e4e29f9ee2 *R/mime.R
 f417ce7bb0aa79fb5516378c50b2cc1e *R/mw-etag.R
@@ -31,7 +31,7 @@ d8b172f2ffc307fb39342b869b3bda25 *R/status.R
 adcaac9acef149bc5f4705301ff5d077 *R/tmpl-glue.R
 b8dd9154beb5b8d8cb5bd37a56ff89b1 *R/utils.R
 4aca6f8e0b573be0301335a8be038814 *R/uuid.R
-8665b219bd7b0b50b1e78424d6b0da7e *README.md
+1af16c9b595fcbe3d7050f18b129b633 *README.md
 d3943445ebf976356df3874cc85c2f43 *inst/credits/ciwetweb.md
 bb9faae548cd71cee0803bd99f1df5da *inst/credits/redoc.md
 6c5a82320bfdd143bf45cee7253e53ab *inst/examples/hello/app.R
@@ -57,7 +57,7 @@ b264e4c43787cb81e7d4c5eb4b006427 *inst/examples/static/public/bar/foo.txt
 5186b0805ea39b8efd70a1d3c85f7a89 *inst/examples/static/public/foo/bar.html
 7c2c080a60bdbcf4ebe6de2a4c27f8ac *inst/examples/static/public/foo/bar.json
 a163d4f17cf2ccba7498236176e9e87e *inst/views/authorize.html
-71bbd0341c523d7f5a10d62044e80c1f *man/httpbin_app.Rd
+36e3cdb1172c61c186599d2c73e2c299 *man/httpbin_app.Rd
 2f72d34848cd14a4608038f081957a8d *man/local_app_process.Rd
 932f8cc4807d4653260d126bbb202a92 *man/mw_etag.Rd
 0630ecb57c8c2a509fc810df6a06b042 *man/mw_json.Rd
@@ -90,7 +90,7 @@ bc57a7d677a95e5b3e78250e4a5e0beb *src/errors.c
 1ac3a7b49282794e006a1715f6ccf8af *src/errors.h
 b479f6dbea9393aea0b3b765d5d56722 *src/handle_form.h
 29f9c450b1c517bc4dea762ee2a8057e *src/md5.h
-867892e1410702066560c13906bd378c *src/rweb.c
+b04953d3d9af2fd6cde689e6a49e7943 *src/rweb.c
 dd1e30c0d7037c6ac73b91e881e7cf31 *tests/testthat.R
 53eab8f2e4faa72bc61706f266402a3a *tests/testthat/fixtures/output/webfakes_app.txt
 bc94c73f4a8795d82d11959bb8977080 *tests/testthat/fixtures/output/webfakes_app_process.txt
