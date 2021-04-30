@@ -1,7 +1,7 @@
-93b66cad30eb1e668bd70e3bf36d1122 *DESCRIPTION
+c2dbd08ddf2b58f69c6cc43dc2657a1f *DESCRIPTION
 fd6302a7bb0d29c2fba79b66644039bc *LICENSE
 900a305b75d387e1420e7297ab8f2b52 *NAMESPACE
-f4017b817675829229ad88173f3d9dc0 *NEWS.md
+b56c00186a1c706947fdebb38408ddd8 *NEWS.md
 21f7dde3be417dab792de1e374d02967 *R/app-process.R
 92e2966244882d8938be20bf35501aed *R/app.R
 d8dbb0089c19547d728fd8f9cf8bf41c *R/base64.R
@@ -90,7 +90,7 @@ bc57a7d677a95e5b3e78250e4a5e0beb *src/errors.c
 1ac3a7b49282794e006a1715f6ccf8af *src/errors.h
 b479f6dbea9393aea0b3b765d5d56722 *src/handle_form.h
 29f9c450b1c517bc4dea762ee2a8057e *src/md5.h
-b04953d3d9af2fd6cde689e6a49e7943 *src/rweb.c
+501ecd79bcbe2e7be69299a0ffd60938 *src/rweb.c
 dd1e30c0d7037c6ac73b91e881e7cf31 *tests/testthat.R
 53eab8f2e4faa72bc61706f266402a3a *tests/testthat/fixtures/output/webfakes_app.txt
 bc94c73f4a8795d82d11959bb8977080 *tests/testthat/fixtures/output/webfakes_app_process.txt
