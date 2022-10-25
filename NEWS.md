@@ -1,3 +1,8 @@
+# webfakes 1.1.5
+
+* `mw_etag()` now handles the `If-None-Match` header properly, and sets
+  the status code of the response to 304, and removes the response body.
+
 # webfakes 1.1.4
 
 * No user visible changes.

@@ -1,8 +1,8 @@
-f4bd75db530f24a4b08d11c2440add4c *DESCRIPTION
+30955b8a141702da50d8d00d967345e8 *DESCRIPTION
 fd6302a7bb0d29c2fba79b66644039bc *LICENSE
 900a305b75d387e1420e7297ab8f2b52 *NAMESPACE
-925b2e1258bd6222278f5e767ce4821e *NEWS.md
-21f7dde3be417dab792de1e374d02967 *R/app-process.R
+ade82a5e93b2e331e451e8a3e351ea6a *NEWS.md
+94595f5bcee640cf7de386cc698c84e3 *R/app-process.R
 92e2966244882d8938be20bf35501aed *R/app.R
 d8dbb0089c19547d728fd8f9cf8bf41c *R/base64.R
 a15ee3dddecc6fe3faaf206de2e61591 *R/cleancall.R
@@ -12,7 +12,7 @@ cc4d7116b0e1f49b56ecde3342e71c12 *R/digest.R
 d78b3e2cf6188ec70a10370d15611641 *R/httpbin.R
 319f8c63839322c1d503fad9c9291a6d *R/local-app-process.R
 75ecdf4307a22a8de5e067e4e29f9ee2 *R/mime.R
-f417ce7bb0aa79fb5516378c50b2cc1e *R/mw-etag.R
+d0481076ec1bafdf6972a86edfbe090c *R/mw-etag.R
 16703673e4118b67ec1b83f6c869c4fd *R/mw-json.R
 0c9dd51fee33b3f0425aaf4cef846fa3 *R/mw-log.R
 016fc22ce24383234d77c649b00e5d7f *R/mw-multipart.R
@@ -22,7 +22,7 @@ d0b8c70f6723bfc088235a6ca14bf37c *R/mw-static.R
 56fda89046f966a7ff2bfac92ef2fb98 *R/mw-urlencoded.R
 35e3708952cba1712724a6fd11c44789 *R/oauth.R
 c2b7311ad5106049d6440ef69857d968 *R/package.R
-5313e73e55417d339cae8c9c82b924ed *R/path.R
+635cdfce5501b303073ecc5be51000a8 *R/path.R
 3257054aef08ca58755e7b134f54e1d7 *R/print.R
 260e9f54b6f663b907494ad53dd14d53 *R/rematch2.R
 36955eb8ce0ed9daf9db9757974bcd0e *R/request.R
@@ -61,7 +61,7 @@ a163d4f17cf2ccba7498236176e9e87e *inst/views/authorize.html
 3a10510e3854bf9b4b467fe4570467bb *man/glossary.Rd
 190d03f74318f1d1a94b71b7449d01b4 *man/httpbin_app.Rd
 2f72d34848cd14a4608038f081957a8d *man/local_app_process.Rd
-932f8cc4807d4653260d126bbb202a92 *man/mw_etag.Rd
+5d5cf84b2fa5249b8618e8b4ad6a01d8 *man/mw_etag.Rd
 0630ecb57c8c2a509fc810df6a06b042 *man/mw_json.Rd
 cfbe67b0b9308ff53ea959d6029905be *man/mw_log.Rd
 7aeb6d8b5deb8aa866140c6c0e9f120b *man/mw_multipart.Rd
@@ -70,7 +70,7 @@ fb77afb0bb216ab048f81ec103ac4193 *man/mw_raw.Rd
 592e0ba8c0303d3feb02b3d8f45d7b2c *man/mw_text.Rd
 e7562fc5e83a445cd02c0709e4b9b05c *man/mw_urlencoded.Rd
 0c08285b78d5a659999c49ab208d813e *man/new_app.Rd
-f563ec255df76a1301a004bc8da2e9c6 *man/new_app_process.Rd
+ec1fd901f0a558aee54054ab40ed1c45 *man/new_app_process.Rd
 a00ceeb3738efcbcf68322a7c5e3574a *man/new_regexp.Rd
 4c1a98cec2cdc8aada531b85a4cced94 *man/oauth2_httr_login.Rd
 39313747ae2fd30159e298a56ca9f36d *man/oauth2_login.Rd
@@ -85,14 +85,14 @@ f1cdc3b5b0687e925e45abf0ab515d7f *src/Makevars
 8d444e303c54e774935a3c9539c6d6ba *src/Makevars.win
 88176388fdea2c81f17eeb0076e8e6e1 *src/civetweb.c
 aab3ed6a469fa6d0dc9f0f3c68d3ffcd *src/civetweb.h
-2686333f5c6ef98c225e15a77b25eae9 *src/cleancall.c
-bff2a7876350a82b2c7d7e402588cddf *src/cleancall.h
+2db4898abcab6bce2d202f0fdc371fee *src/cleancall.c
+3cedbcdfb4d38768d2765d57a891eee1 *src/cleancall.h
 b935423483e3a08ab1dcc620c752d195 *src/crc32.c
 bc57a7d677a95e5b3e78250e4a5e0beb *src/errors.c
 1ac3a7b49282794e006a1715f6ccf8af *src/errors.h
 b479f6dbea9393aea0b3b765d5d56722 *src/handle_form.h
 29f9c450b1c517bc4dea762ee2a8057e *src/md5.h
-501ecd79bcbe2e7be69299a0ffd60938 *src/rweb.c
+8655d41f9322af9c879a4a3b688807be *src/rweb.c
 dd1e30c0d7037c6ac73b91e881e7cf31 *tests/testthat.R
 53eab8f2e4faa72bc61706f266402a3a *tests/testthat/fixtures/output/webfakes_app.txt
 bc94c73f4a8795d82d11959bb8977080 *tests/testthat/fixtures/output/webfakes_app_process.txt
@@ -120,7 +120,7 @@ ddbc916550d7bac609392f6683663b4a *tests/testthat/test-local.R
 2456bc02def9a1516af87492dc866a34 *tests/testthat/test-mw-log.R
 8ced3ab7e5b587fadd0e2772c594a422 *tests/testthat/test-mw-multipart.R
 0e0abb5c165b3080a5ad110f60add9b1 *tests/testthat/test-mw-raw.R
-ee70f202c8dbff772c171915744d2616 *tests/testthat/test-mw-static.R
+8158d3200eedf095e95899e96e896d3f *tests/testthat/test-mw-static.R
 d1a69d7d64107051d4b104494f1e366e *tests/testthat/test-mw-urlencoded.R
 206ffde40f21d7fec53b0a7f5981cdb7 *tests/testthat/test-oauth.R
 11b6488e4a8debdf26dfd91c5c1f5764 *tests/testthat/test-path-matching.R
