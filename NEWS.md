@@ -1,3 +1,11 @@
+# webfakes 1.1.6
+
+* `response$send_file()` now handles `root = "/"` and absolute paths
+  better on Windows.
+
+* `new_app_process()` and `local_app_process()` are now faster,
+  because the app object they need to copy to the subprocess is smaller.
+
 # webfakes 1.1.5
 
 * `mw_etag()` now handles the `If-None-Match` header properly, and sets

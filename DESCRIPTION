@@ -1,6 +1,6 @@
 Package: webfakes
 Title: Fake Web Apps for HTTP Testing
-Version: 1.1.5
+Version: 1.1.6
 Authors@R: 
     c(person(given = "Gábor",
              family = "Csárdi",
@@ -46,7 +46,7 @@ Suggests: callr, curl, glue, jsonlite, httr, httpuv, testthat (>=
         3.0.0), withr, xml2
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2022-10-25 13:27:29 UTC; gaborcsardi
+Packaged: 2022-11-08 12:03:34 UTC; gaborcsardi
 Author: Gábor Csárdi [aut, cre],
   RStudio, Pbc. [cph],
   Civetweb contributors [ctb] (see inst/credits/ciwetweb.md),
@@ -57,4 +57,4 @@ Author: Gábor Csárdi [aut, cre],
   Maëlle Salmon [ctb] (<https://orcid.org/0000-0002-2815-0399>)
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-10-25 13:40:02 UTC
+Date/Publication: 2022-11-08 13:10:02 UTC
