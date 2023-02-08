@@ -1,7 +1,7 @@
-210f6f2e23c1441fc30302f09a53a1de *DESCRIPTION
+9c8c21c5a748a10fb7d6cd7de03c0b27 *DESCRIPTION
 fd6302a7bb0d29c2fba79b66644039bc *LICENSE
 900a305b75d387e1420e7297ab8f2b52 *NAMESPACE
-1e32fe64ea13440ebe4f6e34fbed80a2 *NEWS.md
+c7de379157beeea7626198952f244f7e *NEWS.md
 f0a1655f56d3c4547765d4fe9deb075c *R/app-process.R
 92e2966244882d8938be20bf35501aed *R/app.R
 d8dbb0089c19547d728fd8f9cf8bf41c *R/base64.R
@@ -32,7 +32,8 @@ d8b172f2ffc307fb39342b869b3bda25 *R/status.R
 adcaac9acef149bc5f4705301ff5d077 *R/tmpl-glue.R
 b8dd9154beb5b8d8cb5bd37a56ff89b1 *R/utils.R
 4aca6f8e0b573be0301335a8be038814 *R/uuid.R
-de2b015d8c302ca0353693ec2df675be *README.md
+df6cc46bc7fae1a55b713f3d5065b35a *R/webfakes-package.R
+e9290ff47427776e767642a9c1456ce1 *README.md
 d3943445ebf976356df3874cc85c2f43 *inst/credits/ciwetweb.md
 bb9faae548cd71cee0803bd99f1df5da *inst/credits/redoc.md
 6c5a82320bfdd143bf45cee7253e53ab *inst/examples/hello/app.R
@@ -79,11 +80,12 @@ e82f9b5f0a5fb5730d5e8ae36c7b563d *man/oauth2_third_party_app.Rd
 9a855c74792013bd993bea790d7e8682 *man/rmd-fragments/oauth2.Rmd
 1ea294d20ec2a50421d9e49cd1835727 *man/server_opts.Rd
 3acb0a67e7b026f6517ff82c6020d515 *man/tmpl_glue.Rd
+f02bb6c8fb0ef7d4f740a02ac0d0de3f *man/webfakes-package.Rd
 517c71d331371eb9c1a5ed4ecc52fffd *man/webfakes_request.Rd
 44e56c4a645d8c553fd6cba1ea540673 *man/webfakes_response.Rd
 f1cdc3b5b0687e925e45abf0ab515d7f *src/Makevars
 8d444e303c54e774935a3c9539c6d6ba *src/Makevars.win
-88176388fdea2c81f17eeb0076e8e6e1 *src/civetweb.c
+8c415ce6dd833fe8e71f1a686b8334ac *src/civetweb.c
 aab3ed6a469fa6d0dc9f0f3c68d3ffcd *src/civetweb.h
 2db4898abcab6bce2d202f0fdc371fee *src/cleancall.c
 3cedbcdfb4d38768d2765d57a891eee1 *src/cleancall.h
@@ -92,7 +94,7 @@ bc57a7d677a95e5b3e78250e4a5e0beb *src/errors.c
 1ac3a7b49282794e006a1715f6ccf8af *src/errors.h
 b479f6dbea9393aea0b3b765d5d56722 *src/handle_form.h
 29f9c450b1c517bc4dea762ee2a8057e *src/md5.h
-8655d41f9322af9c879a4a3b688807be *src/rweb.c
+a14c16266b597d693855d116f7e38de3 *src/rweb.c
 dd1e30c0d7037c6ac73b91e881e7cf31 *tests/testthat.R
 53eab8f2e4faa72bc61706f266402a3a *tests/testthat/fixtures/output/webfakes_app.txt
 bc94c73f4a8795d82d11959bb8977080 *tests/testthat/fixtures/output/webfakes_app_process.txt
