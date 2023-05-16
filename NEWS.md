@@ -1,3 +1,30 @@
+# webfakes 1.2.0
+
+* The httpbin app now implements the `/brotli`, `/deflate`, `/digest-auth`
+  `/forms/post`, `/hidden-basic-auth`, `/range/:n`, `/stream/:n`, `/cache`
+  and `/cache/:value` endpoints. With these, it implements all endpoint of
+  the otiginal Python httpbin app (#3).
+
+* New middleware `mw_cookie_parser()` to parse a `Cookie` header. Relatedly,
+  new `response$add_cookie()` and `response$clear_cookie()` methods to add a
+  cookie to a response and to add a header that clears a cookie (#2).
+
+* Parsing query parametes without a value now does not fail.
+
+* New utility function `http_time_stamp()` to format a time stamp for HTTP.
+
+* The httpbin app now implements the endpoints related to cookies (#3).
+
+* The httpbin app now sends the `Date` header in the correct format.
+
+* The `offset` parameter is now optional in the `/links` endpoint of the
+  httpbin app.
+
+* `mw_etag()` now does not add an `ETag` header to the response, if there
+  is one already. (The comparision is case sensitive.)
+
+* New middleware: `mw_range_parser()` to parse `Range` headers.
+
 # webfakes 1.1.7
 
 * No user visible changes.
