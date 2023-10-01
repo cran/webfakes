@@ -1,9 +1,9 @@
-4411fd4fd71209babb2849bb627065f8 *DESCRIPTION
+dc2aafaab6bcacb58b47dd5019c3c5fc *DESCRIPTION
 fd6302a7bb0d29c2fba79b66644039bc *LICENSE
 004b7c19eeca8058fdc20f03087ac5fa *NAMESPACE
-bd18a7ebd4b287bee7f6d02dad948d29 *NEWS.md
+a32ce025ab91fc36f9c534c7095a568d *NEWS.md
 f0a1655f56d3c4547765d4fe9deb075c *R/app-process.R
-60a9ba766b6a1f7f6518c2ba95fd44a2 *R/app.R
+0641d5cd989ef14b3dfc8ea7c8d39849 *R/app.R
 d8dbb0089c19547d728fd8f9cf8bf41c *R/base64.R
 a15ee3dddecc6fe3faaf206de2e61591 *R/cleancall.R
 74da295dd7a1e9db2b9a6e746cf9ae4a *R/compat-defer.R
@@ -32,7 +32,7 @@ c2b7311ad5106049d6440ef69857d968 *R/package.R
 905436bc14dfc849cdc140b771588d97 *R/response.R
 735d94be8fbc7d2f778f16fa4c477282 *R/server.R
 d8b172f2ffc307fb39342b869b3bda25 *R/status.R
-adcaac9acef149bc5f4705301ff5d077 *R/tmpl-glue.R
+0841cfdaedaa0a976afc73f77d4cb9ba *R/tmpl-glue.R
 46a5ebc593ce5bed7caba42c5ad1b488 *R/utils.R
 4aca6f8e0b573be0301335a8be038814 *R/uuid.R
 df6cc46bc7fae1a55b713f3d5065b35a *R/webfakes-package.R
@@ -77,7 +77,7 @@ d77a6a26774d20acb80353904d909c6d *man/mw_multipart.Rd
 f08e9ce80a42e9dbc944e299d555b938 *man/mw_static.Rd
 5f87f74c2a59d4fa9ab3012a4aadda7c *man/mw_text.Rd
 e4464f55eaa22d75698d92c8ef32e5ff *man/mw_urlencoded.Rd
-fe7ae40af66f0cc596698da6815041c3 *man/new_app.Rd
+0b29f830342828ab5a26329c26de24a9 *man/new_app.Rd
 ec1fd901f0a558aee54054ab40ed1c45 *man/new_app_process.Rd
 a00ceeb3738efcbcf68322a7c5e3574a *man/new_regexp.Rd
 4c1a98cec2cdc8aada531b85a4cced94 *man/oauth2_httr_login.Rd
@@ -126,7 +126,7 @@ d2f3ba01556b63c3c56f8c069cb065f8 *tests/testthat/test-app.R
 8561f7c34ea02be68ee231e1fef2d18a *tests/testthat/test-base64.R
 a83f70864880a222919197f0e862a8c0 *tests/testthat/test-delay.R
 4667b6a3c6da1899e02b6ae7565a0580 *tests/testthat/test-http-methods.R
-6e0fe175d27e9fa9fc77b8f8fceda4e2 *tests/testthat/test-httpbin.R
+eb1cac99d8306125a72aaec116da528c *tests/testthat/test-httpbin.R
 ddbc916550d7bac609392f6683663b4a *tests/testthat/test-local.R
 3298e815bfcc7198a44fc6dc904f8b98 *tests/testthat/test-mime.R
 35c1fe0841038047fd8729321ef52dbd *tests/testthat/test-mw-etag.R

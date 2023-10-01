@@ -1,6 +1,6 @@
 Package: webfakes
 Title: Fake Web Apps for HTTP Testing
-Version: 1.2.0
+Version: 1.2.1
 Authors@R: c(
     person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre")),
     person(, "RStudio, Pbc.", role = c("cph", "fnd")),
@@ -35,7 +35,7 @@ Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 RoxygenNote: 7.2.3
 NeedsCompilation: yes
-Packaged: 2023-05-16 20:13:50 UTC; gaborcsardi
+Packaged: 2023-09-30 18:52:18 UTC; gaborcsardi
 Author: Gábor Csárdi [aut, cre],
   RStudio, Pbc. [cph, fnd],
   Civetweb contributors [ctb] (see inst/credits/ciwetweb.md),
@@ -46,4 +46,4 @@ Author: Gábor Csárdi [aut, cre],
   Maëlle Salmon [ctb] (<https://orcid.org/0000-0002-2815-0399>)
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-05-16 20:30:02 UTC
+Date/Publication: 2023-10-01 06:10:02 UTC
