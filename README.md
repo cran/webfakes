@@ -55,6 +55,7 @@ Lightweight fake web apps for testing. Built using the
 - The `/deflate` endpoint of `httpbin_app()` needs the zip package.
 - The `/digest-auth` endpoint of `httpbin_app()` needs the digest
   package.
+- `git_app()` requires the processx package.
 
 ## Installation
 
@@ -62,6 +63,13 @@ Install the release version from CRAN:
 
 ``` r
 install.packages("webfakes")
+```
+
+If you need the development version of the package, install it from
+GitHub:
+
+``` r
+pak::pak("r-lib/webfakes")
 ```
 
 ## Usage

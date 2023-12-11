@@ -1,3 +1,11 @@
+# webfakes 1.3.0
+
+* New `git_app()` app to fake a git HTTP server. See the webfakes test cases
+  for examples.
+
+* New `mw_cgi()` middleware to call CGI scripts. See the new `git_app()`
+  for an example.
+
 # webfakes 1.2.1
 
 * `tmpl_glue()` now works correctly on platforms with an issue in

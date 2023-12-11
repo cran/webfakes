@@ -12,7 +12,7 @@ Create a web app that makes it easier to test web clients without using the inte
 Useful links:
 \itemize{
   \item \url{https://webfakes.r-lib.org/}
-  \item \url{https://github.com/r-lib/webfakes#readme}
+  \item \url{https://github.com/r-lib/webfakes}
   \item Report bugs at \url{https://github.com/r-lib/webfakes/issues}
 }
 
@@ -22,7 +22,7 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item  RStudio, Pbc. [copyright holder, funder]
+  \item Posit Software, PBC [copyright holder, funder]
   \item  Civetweb contributors (see inst/credits/ciwetweb.md) [contributor]
   \item  Redoc contributors (see inst/credits/redoc.md) [contributor]
   \item L. Peter Deutsch (src/md5.h) [contributor]
