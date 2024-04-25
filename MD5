@@ -1,7 +1,7 @@
-3a43703ca9865b2e021dca73429fbb60 *DESCRIPTION
+4fe0425c63983915e12d502a9798978a *DESCRIPTION
 c0288025d92db56102e8471b0a7f6a9a *LICENSE
 de4abb60cda1343e55e18ed08d50161e *NAMESPACE
-204b316bbf52c54c13cddaafcfea042f *NEWS.md
+eb09bd3e7b02df12278bbeeb878948a0 *NEWS.md
 f0a1655f56d3c4547765d4fe9deb075c *R/app-process.R
 0641d5cd989ef14b3dfc8ea7c8d39849 *R/app.R
 d8dbb0089c19547d728fd8f9cf8bf41c *R/base64.R
@@ -105,7 +105,7 @@ b935423483e3a08ab1dcc620c752d195 *src/crc32.c
 1ac3a7b49282794e006a1715f6ccf8af *src/errors.h
 b479f6dbea9393aea0b3b765d5d56722 *src/handle_form.h
 29f9c450b1c517bc4dea762ee2a8057e *src/md5.h
-375f77e0cf598e3b4051dac8e75ac636 *src/rweb.c
+df8c12b6ac0ea7fb58e5eaf3b7961ec4 *src/rweb.c
 dd1e30c0d7037c6ac73b91e881e7cf31 *tests/testthat.R
 8dcc806ca4302ee3a8dbac408c2ef01b *tests/testthat/_snaps/git-app.md
 a830d7ad09a1b2af0bf8245db3f5c04a *tests/testthat/_snaps/mw-range-parser.md

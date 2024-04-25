@@ -1,3 +1,7 @@
+# webfakes 1.3.1
+
+No changes.
+
 # webfakes 1.3.0
 
 * New `git_app()` app to fake a git HTTP server. See the webfakes test cases
@@ -17,7 +21,7 @@
 * The httpbin app now implements the `/brotli`, `/deflate`, `/digest-auth`
   `/forms/post`, `/hidden-basic-auth`, `/range/:n`, `/stream/:n`, `/cache`
   and `/cache/:value` endpoints. With these, it implements all endpoint of
-  the otiginal Python httpbin app (#3).
+  the original Python httpbin app (#3).
 
 * New middleware `mw_cookie_parser()` to parse a `Cookie` header. Relatedly,
   new `response$add_cookie()` and `response$clear_cookie()` methods to add a
