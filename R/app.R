@@ -1,4 +1,3 @@
-
 pkg_data <- new.env(parent = emptyenv())
 
 #' Create a new web application
@@ -22,7 +21,7 @@ pkg_data <- new.env(parent = emptyenv())
 #' * extended by simply adding new routes and/or middleware.
 #'
 #' The webfakes API is very much influenced by the
-#' [express.js](http://expressjs.com/) project.
+#' [express.js](https://expressjs.com/) project.
 #'
 #' ## Create web app objects
 #'
@@ -249,7 +248,10 @@ pkg_data <- new.env(parent = emptyenv())
 #' ```
 #'
 #' * `port`: port to listen on. When `NULL`, the operating system will
-#'   automatically select a free port.
+#'   automatically select a free port. Add an `"s"` suffix to the port
+#'   to use HTTPS. Use `"0s"` to use an OS assigned port with HTTPS.
+#'   See the [how-to] manual page if you want to start the web server
+#'   on more than one ports.
 #'
 #' * `opts`: options to the web server. See [server_opts()] for the
 #'   list of options and their default values.
@@ -365,7 +367,6 @@ pkg_data <- new.env(parent = emptyenv())
 #' # Or start it in another R session: new_app_process(app)
 
 new_app <- function() {
-
   self <- new_object(
     "webfakes_app",
 
@@ -405,8 +406,9 @@ new_app <- function() {
     },
 
     listen = function(port = NULL, opts = server_opts(), cleanup = TRUE) {
-      stopifnot(is.null(port) || is_port(port) || is_na_scalar(port))
-      if (is_na_scalar(port)) port <- NULL
+      if (is_na_scalar(port)) {
+        port <- NULL
+      }
       opts$port <- port
       self$.enable_keep_alive <- opts$enable_keep_alive
       opts$access_log_file <- sub("%p", Sys.getpid(), opts$access_log_file)
@@ -417,9 +419,17 @@ new_app <- function() {
         err$message <- paste(sep = "\n", err$message, self$.get_error_log())
         stop(err)
       })
-      ports <- server_get_ports(srv)
-      self$.port <- ports$port[1]
-      message("Running webfakes web app on port ", self$.port)
+      self$.ports <- server_get_ports(srv)
+      self$.port <- self$.ports$port[1]
+      port_nums <- paste0(
+        self$.ports$port,
+        ifelse(self$.ports$ssl, " (SSL)", "")
+      )
+      message(
+        "Running webfakes web app on port",
+        if (length(port_nums) > 1) "s " else " ",
+        paste(port_nums, collapse = ", ")
+      )
       if (!is.na(opts$access_log_file)) {
         message("Access log file: ", opts$access_log_file)
       }
@@ -428,6 +438,7 @@ new_app <- function() {
       }
       msg <- structure(
         list(
+          ports = self$.ports,
           port = self$.port,
           access_log = attr(srv, "options")$access_log_file,
           error_log = attr(srv, "options")$error_log_file
@@ -504,6 +515,7 @@ new_app <- function() {
     locals = new.env(parent = parent.frame()),
 
     # Private data
+    .ports = NULL,
     .port = NULL,
     .enable_keep_alive = NULL,
     .opts = NULL,
@@ -525,30 +537,37 @@ new_app <- function() {
       res <- req$res
       res$.delay <- NULL
 
-      tryCatch({
-        for (i in sseq(res$.stackptr, length(self$.stack))) {
-          handler <- self$.stack[[i]]
-          m <- path_match(req$method, req$path, handler)
-          if (!isFALSE(m)) {
-            res$.i <- i
-            if (is.list(m)) req$params <- m$params
-            out <- handler$handler(req, res)
-            if (!identical(out, "next")) break
+      tryCatch(
+        {
+          for (i in sseq(res$.stackptr, length(self$.stack))) {
+            handler <- self$.stack[[i]]
+            m <- path_match(req$method, req$path, handler)
+            if (!isFALSE(m)) {
+              res$.i <- i
+              if (is.list(m)) {
+                req$params <- m$params
+              }
+              out <- handler$handler(req, res)
+              if (!identical(out, "next")) break
+            }
           }
-        }
 
-        if (!res$.sent && is.null(res$.delay)) {
-          if (!res$headers_sent) {
-            res$send_status(404)
-          } else if ((res$get_header("Transfer-Encoding") %||% "") == "chunked") {
-            res$send_chunk(raw(0))
-            res$headers_sent <- TRUE
-            res$send("")
-          } else {
-            res$send("")
+          if (!res$.sent && is.null(res$.delay)) {
+            if (!res$headers_sent) {
+              res$send_status(404)
+            } else if (
+              (res$get_header("Transfer-Encoding") %||% "") == "chunked"
+            ) {
+              res$send_chunk(raw(0))
+              res$headers_sent <- TRUE
+              res$send("")
+            } else {
+              res$send("")
+            }
           }
-        }
-      }, webfakes_error = function(err) { })
+        },
+        webfakes_error = function(err) {}
+      )
     },
 
     .get_error_log = function() {
@@ -556,7 +575,6 @@ new_app <- function() {
         paste0("Error log:\n", read_char(self$.opts$error_log_file))
       }
     }
-
   )
 
   self

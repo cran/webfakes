@@ -35,7 +35,7 @@ A web application can be
 }
 
 The webfakes API is very much influenced by the
-\href{http://expressjs.com/}{express.js} project.
+\href{https://expressjs.com/}{express.js} project.
 \subsection{Create web app objects}{
 
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{new_app()
@@ -271,7 +271,10 @@ available.
 }\if{html}{\out{</div>}}
 \itemize{
 \item \code{port}: port to listen on. When \code{NULL}, the operating system will
-automatically select a free port.
+automatically select a free port. Add an \code{"s"} suffix to the port
+to use HTTPS. Use \code{"0s"} to use an OS assigned port with HTTPS.
+See the \link{how-to} manual page if you want to start the web server
+on more than one ports.
 \item \code{opts}: options to the web server. See \code{\link[=server_opts]{server_opts()}} for the
 list of options and their default values.
 \item \code{cleanup}: stop the server (with an error) if the standard input

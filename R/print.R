@@ -1,8 +1,5 @@
-
 format_named_list <- function(name, data) {
-  c(paste0(name, ":"),
-    if (length(data)) paste0("  ", names(data), ": ", data)
-  )
+  c(paste0(name, ":"), if (length(data)) paste0("  ", names(data), ": ", data))
 }
 
 format_path <- function(patterns) {
@@ -146,7 +143,8 @@ format.webfakes_app_process <- function(x, ...) {
   )
   methods <- c(
     "  get_app()              # get the app object",
-    "  get_port()             # query port of the app",
+    "  get_port()             # query (first) port of the app",
+    "  get_ports()            # query all ports of the app",
     "  get_state()            # query web server process state",
     "  local_env(envvars)     # set temporary environment variables",
     "  start()                # start the app",

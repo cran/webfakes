@@ -1,16 +1,18 @@
-
 #' Run a webfakes app in another process
 #'
 #' Runs an app in a subprocess, using [callr::r_session].
 #'
 #' @param app `webfakes_app` object, the web app to run.
-#' @param port Port to use. By default the OS assigns a port.
+#' @param port Port(s) to use. By default the OS assigns a port.
+#'   Add an `"s"` suffix to the port to use HTTPS. Use `"0s"` to
+#'   use an OS assigned port with HTTPS. See the [how-to] on how
+#'   to run the web server on multiple ports.
 #' @param opts Server options. See [server_opts()] for the defaults.
 #' @param start Whether to start the web server immediately. If this is
 #'   `FALSE`, and `auto_start` is `TRUE`, then it is started as neeed.
 #' @param auto_start Whether to start the web server process automatically.
 #'   If `TRUE` and the process is not running, then `$start()`,
-#'   `$get_port()` and `$url()` start the process.
+#'   `$get_port()`, `$get_ports()` and `$url()` start the process.
 #' @param process_timeout How long to wait for the subprocess to start, in
 #'   milliseconds.
 #' @param callr_opts Options to pass to [callr::r_session_options()]
@@ -24,6 +26,7 @@
 #' ```r
 #' get_app()
 #' get_port()
+#' get_ports()
 #' stop()
 #' get_state()
 #' local_env(envvars)
@@ -37,7 +40,11 @@
 #'
 #' `get_app()` returns the app object.
 #'
-#' `get_port()` returns the port the web server is running on.
+#' `get_port()` returns the (first) port the web server is running on.
+#'
+#' `get_ports()` returns all ports the web server is running on, and
+#' whether it uses SSL on those ports, in a data frame with columns
+#' `ipv4`, `ipv6`, `port` and `ssl`.
 #'
 #' `stop()` stops the web server, and also the subprocess. If the error
 #' log file is not empty, then it dumps its contents to the screen.
@@ -73,17 +80,28 @@
 #'
 #' proc$stop()
 
-new_app_process <- function(app, port = NULL,
-                            opts = server_opts(remote = TRUE),
-                            start = FALSE, auto_start = TRUE,
-                            process_timeout = NULL,
-                            callr_opts = NULL) {
-
-  app; port; opts; start; auto_start; process_timeout; callr_opts
+new_app_process <- function(
+  app,
+  port = NULL,
+  opts = server_opts(remote = TRUE),
+  start = FALSE,
+  auto_start = TRUE,
+  process_timeout = NULL,
+  callr_opts = NULL
+) {
+  app
+  port
+  opts
+  start
+  auto_start
+  process_timeout
+  callr_opts
 
   # WTF
   tmp <- tempfile()
-  sink(tmp); print(app$.stack); sink(NULL)
+  sink(tmp)
+  print(app$.stack)
+  sink(NULL)
   unlink(tmp)
 
   process_timeout <- process_timeout %||%
@@ -121,10 +139,13 @@ new_app_process <- function(app, port = NULL,
         stop(msg$error)
       }
       if (msg$code != 301) {
-        stop("Unexpected message from webfakes app subprocess. ",
-             "Report a bug please.")
+        stop(
+          "Unexpected message from webfakes app subprocess. ",
+          "Report a bug please."
+        )
       }
-      self$.port <- msg$message$port
+      self$.ports <- msg$message$ports
+      self$.port <- msg$message$ports$port[1]
       self$.access_log <- msg$message$access_log
       self$.error_log <- msg$message$error_log
       self$.set_env()
@@ -135,13 +156,24 @@ new_app_process <- function(app, port = NULL,
     get_app = function() self$.app,
 
     get_port = function() {
-      if (self$get_state() == "not running" && auto_start) self$start()
-      self$.port
+      if (self$get_state() == "not running" && auto_start) {
+        self$start()
+      }
+      self[[".port"]]
+    },
+
+    get_ports = function() {
+      if (self$get_state() == "not running" && auto_start) {
+        self$start()
+      }
+      self[[".ports"]]
     },
 
     stop = function() {
       self$.reset_env()
-      if (is.null(self$.process)) return(invisible(self))
+      if (is.null(self$.process)) {
+        return(invisible(self))
+      }
 
       if (!self$.process$is_alive()) {
         status <- self$.process$get_exit_status()
@@ -149,27 +181,14 @@ new_app_process <- function(app, port = NULL,
         try_silently(out <- self$.process$read_output())
         try_silently(err <- self$.process$read_error())
         cat0("webfakes process dead, exit code: ", status, "\n")
-        if (!is.null(out)) cat0("stdout:", out, "\n")
+        if (!is.null(out)) {
+          cat0("stdout:", out, "\n")
+        }
         if (!is.null(err)) cat0("stderr:", err, "\n")
       }
 
-      # The details are important here, for the sake of covr,
-      # so that we can test the webfakes package itself.
-      # 1. The subprocess serving the app is in Sys.sleep(), which we
-      #    need to interrupt first.
-      # 2. Then we need to read out the result of that $call()
-      #    (i.e. the interruption), because otherwise the subprocess is
-      #    stuck at a blocking write() system call, and cannot be
-      #    interrupted in the $close() call, and will be killed, and
-      #    then it cannot write out the coverage results.
-      # 3. Once we $read(), we can call $close() because that will
-      #    close the standard input of the subprocess, which is reading
-      #    the standard input, so it will quit.
-
-      self$.process$interrupt()
-      self$.process$poll_process(1000)
+      try_silently(self$.process$close(grace = 0))
       try_silently(self$.process$read())
-      try_silently(self$.process$close())
       self$.print_errors()
       self$.process <- NULL
       invisible(self)
@@ -213,16 +232,37 @@ new_app_process <- function(app, port = NULL,
       }
     },
 
-    url = function(path = "/", query = NULL) {
-      if (self$get_state() == "not running" && auto_start) self$start()
+    url = function(
+      path = "/",
+      query = NULL,
+      https = FALSE,
+      domain = "127.0.0.1"
+    ) {
+      if (self$get_state() == "not running" && auto_start) {
+        self$start()
+      }
       if (!is.null(query)) {
         query <- paste0("?", paste0(names(query), "=", query, collapse = "&"))
       }
-      paste0("http://127.0.0.1:", self$.port, path, query)
+      port <- if (https) {
+        if (!any(self$.ports$ssl)) {
+          stop("Web server does support HTTPS")
+        }
+        self$.ports$port[self$.ports$ssl][1]
+      } else {
+        self$.port
+      }
+      proto <- if (self$.ports$ssl[match(port, self$.ports$port)]) {
+        "https"
+      } else {
+        "http"
+      }
+      paste0(proto, "://", domain, ":", port, path, query)
     },
 
     .process = NULL,
     .app = NULL,
+    .ports = NULL,
     .port = NULL,
     .old_env = NULL,
     .access_log = NA_character_,
@@ -230,8 +270,11 @@ new_app_process <- function(app, port = NULL,
     .auto_start = auto_start,
 
     .print_errors = function() {
-      if (!is.na(self$.error_log) && file.exists(self$.error_log) &&
-          file.info(self$.error_log)$size > 0) {
+      if (
+        !is.na(self$.error_log) &&
+          file.exists(self$.error_log) &&
+          file.info(self$.error_log)$size > 0
+      ) {
         err <- readLines(self$.error_log, warn = FALSE)
         cat("webfakes web server errors:\n")
         cat(err, sep = "\n")
@@ -241,7 +284,9 @@ new_app_process <- function(app, port = NULL,
 
   reg.finalizer(self, function(x) x$.reset_env())
 
-  if (start) self$start()
+  if (start) {
+    self$start()
+  }
 
   self
 }
